@@ -28,10 +28,6 @@ class Pipe:
             default="medium",
             description="Reasoning effort: low, medium, high",
         )
-        ENABLE_WEB_SEARCH: bool = Field(
-            default=False,
-            description="Enable web search tool for real-time information",
-        )
         SHOW_TOKEN_STATS: bool = Field(
             default=True,
             description="Display token usage statistics with each response",
@@ -334,10 +330,6 @@ class Pipe:
                 "max_output_tokens": min(max(self.valves.MAX_OUTPUT_TOKENS, 1), 32768),
             }
 
-            # Add web search tool if enabled (only o3-pro supports it)
-            if self.valves.ENABLE_WEB_SEARCH and model_id == "o3-pro":
-                payload["tools"] = [{"type": "web_search"}]
-
             # Transform messages
             payload["input"] = self._transform_messages(body["messages"])
 
@@ -418,7 +410,6 @@ class Pipe:
                 for item in output_items:
                     if isinstance(item, dict) and item.get("type") in [
                         "file_search",
-                        "web_search",
                         "function",
                     ]:
                         tools_used.append(item["type"])
