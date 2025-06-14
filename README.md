@@ -19,7 +19,7 @@ Access OpenAI's most advanced reasoning models with comprehensive token usage tr
 
 ## 🚀 Quick Start
 
-1. Install the function in Open Web UI
+1. Install the [function](https://www.openwebui.com/f/karanb192/o3pro_o1pro_support) in Open Web UI
 2. Add your OpenAI API key(s) in settings
 3. Select "OpenAI: o1-pro" or "OpenAI: o3-pro" from the model dropdown
 4. Start chatting with cost tracking enabled
